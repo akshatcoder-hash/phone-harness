@@ -39,6 +39,22 @@ PY
 phone-harness cloud stop           # ends the session
 ```
 
+## Keep Android apps and logins between sessions
+
+For a persistent workflow, use `phone-harness cloud ls` and pass the saved
+Android's id or label to `phone-harness cloud start PHONE`. Start that same
+saved phone after stopping to resume its apps and logins.
+
+A bare `phone-harness cloud start`, with no `cloud.phone` preference and no
+existing attachment, requests a **temporary Android**. Its state is discarded
+when the session ends. `cloud stop` ends that session; it does not turn a
+temporary phone into a saved phone. Having a saved Android in the account
+alone does not make a bare start select it.
+
+Agents that need persistence should use the saved phone's id or label in every
+start command. A configured `cloud.phone` preference can also select it for
+bare starts. Check the selected phone before relying on retained state.
+
 New accounts get $5 of credit (100 Android minutes). Only a cloud Android
 bills by the minute; a cloud iPhone does not, so it can stay running.
 A cloud iPhone is a separate phone from the user's own, with its own apps
